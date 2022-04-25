@@ -25,3 +25,7 @@
 ADD `name` `surname` `age` `phone` |
 DEL `surname` |
 GET `surname` |
+
+### Пример рабюоты
+
+![](img/example.png)
