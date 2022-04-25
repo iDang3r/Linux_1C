@@ -13,3 +13,15 @@
 - `long get_user(const char* surname, unsigned int len, struct user_data* output_data);`
 - `long add_user(struct user_data* input_data);`
 - `long del_user(const char* surname, unsigned int len).`
+
+## Решение
+
+Решение разделено на 2 модуля. Первый - `catalog_module`, занимается непосредственно хранением структур `UserCatalog` с данными на каждого пользователя. Второй - `catalog_device`, непосредственно устройство, через которое работает пользоваель.
+
+Девайс `/dev/my_catalog` обрабатывает следующие запросы:
+
+Команда |
+--
+ADD `name` `surname` `age` `phone` |
+DEL `surname` |
+GET `surname` |

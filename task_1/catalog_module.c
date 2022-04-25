@@ -37,10 +37,6 @@ long catalog_get_user(const char* surname, unsigned int len, UserCatalog* output
     struct catalog_node *node;
 
     if (list_empty(&catalog_head)) {
-        strcpy(output_data->name.str, "Oleg");
-        output_data->name.len = 4;
-        strcpy(output_data->surname.str, "Saranchin");
-        output_data->surname.len = 9;
         return -1;
     }
 
