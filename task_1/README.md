@@ -21,7 +21,7 @@
 Девайс `/dev/my_catalog` обрабатывает следующие запросы:
 
 Команда |
---
+--|
 ADD `name` `surname` `age` `phone` |
 DEL `surname` |
 GET `surname` |
