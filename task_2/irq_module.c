@@ -7,7 +7,7 @@ MODULE_AUTHOR("Alex Rusin");
 MODULE_DESCRIPTION("Keyboard interrupt3r");
 MODULE_VERSION("0.17");
 
-#define TIME_TO_WAIT 10
+#define TIME_TO_WAIT 5
 
 static int irq = 1;
 module_param(irq, int, S_IRUGO);
@@ -17,8 +17,7 @@ static bool stop = false;
 
 static irqreturn_t keyboard_interrupt(int irq, void* dev_id) {
     irq_counter++;
-    // printk( KERN_INFO "In the keyboard_interrupt: counter = %d\n", irq_counter );
-    return IRQ_NONE;  /* we return IRQ_NONE because we are just observing */
+    return IRQ_NONE;
 }
 
 static void printer_handler(struct work_struct*);
@@ -38,11 +37,8 @@ static int __init irq_module_init(void) {
         printk(KERN_INFO "request_irq failed");
         return ret;
     }
-    ret = schedule_delayed_work(&PrinterHandler, TIME_TO_WAIT * HZ);
-    if (ret) {
-        printk(KERN_INFO "schedule_delayed_work failed");
-        return ret;
-    }
+    schedule_delayed_work(&PrinterHandler, TIME_TO_WAIT * HZ);
+
     printk(KERN_INFO "Set handler on IRQ: %d\n", irq );
     return 0;
 }
