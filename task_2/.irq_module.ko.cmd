@@ -1,1 +1,0 @@
-cmd_/home/alex/1C/Linux_1C/task_2/irq_module.ko := ld -r -m elf_x86_64 --build-id=sha1  -T scripts/module.lds -o /home/alex/1C/Linux_1C/task_2/irq_module.ko /home/alex/1C/Linux_1C/task_2/irq_module.o /home/alex/1C/Linux_1C/task_2/irq_module.mod.o;  true
