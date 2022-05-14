@@ -1,0 +1,29 @@
+diff --color -r linux-5.16.8/fs/proc/base.c linux-5.16.8_patched/fs/proc/base.c
+3148a3149,3159
+> static int proc_my_scheduled(struct seq_file *m, struct pid_namespace *ns,
+> 				struct pid *pid, struct task_struct *task)
+> {
+> 	int err = lock_trace(task);
+> 	if (!err) {
+> 		seq_printf(m, "Hi, Alex! Scheduled: %ld\n", task->scheduled);
+> 		unlock_trace(task);
+> 	}
+> 	return err;
+> }
+> 
+3205a3217
+> 	ONE("my_scheduled",		S_IRUSR, proc_my_scheduled),
+3546a3559
+> 	ONE("my_scheduled",		S_IRUSR, proc_my_scheduled),
+
+diff --color -r linux-5.16.8/include/linux/sched.h linux-5.16.8_patched/include/linux/sched.h
+1011a1012,1013
+> 	unsigned long 			scheduled;
+
+diff --color -r linux-5.16.8/kernel/fork.c linux-5.16.8_patched/kernel/fork.c
+1477a1478
+> 	tsk->scheduled = 0;
+
+diff --color -r linux-5.16.8/kernel/sched/core.c linux-5.16.8_patched/kernel/sched/core.c
+6245a6246
+>    prev->scheduled++;
