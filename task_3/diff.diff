@@ -26,4 +26,4 @@ diff --color -r linux-5.16.8/kernel/fork.c linux-5.16.8_patched/kernel/fork.c
 
 diff --color -r linux-5.16.8/kernel/sched/core.c linux-5.16.8_patched/kernel/sched/core.c
 6245a6246
->    prev->scheduled++;
+> 	prev->scheduled++;
